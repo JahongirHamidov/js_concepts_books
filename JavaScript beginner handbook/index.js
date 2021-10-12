@@ -54,4 +54,3 @@
         Object types have properties and also have methods that can act on those properties. 
 */
 
-console.log(2**2)
