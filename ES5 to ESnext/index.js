@@ -205,4 +205,48 @@ so it's essential to understand how it works.
 
 
                     @ Array.prototype.{flat,flatMap}
-                    
+    flat() is a new array instance method that can create a one-dimensional array from a multidimensional array. 
+        Example:
+            ['Dog', ['Sheep', 'Wolf']].flat() 
+                //[ 'Dog', 'Sheep', 'Wolf' ]
+    By default it only "flats" up to one level, but you can add a parameter 
+        to set the number of levels you want to flat the array to. Set it to Infinity to have unlimited levels:
+            
+            ['Dog', ['Sheep', ['Wolf']]].flat() //[ 'Dog', 'Sheep', [ 'Wolf' ] ] 
+            ['Dog', ['Sheep', ['Wolf']]].flat(2) //[ 'Dog', 'Sheep', 'Wolf' ] 
+            ['Dog', ['Sheep', ['Wolf']]].flat(Infinity) //[ 'Dog', 'Sheep', 'Wolf' ]
+
+    If you are familiar with the JavaScript map() method of an array, you know that using it you can execute a function on 
+        every element of an array. flatMap() is a new Array instance method that combines flat() with map() . 
+    It's useful when calling a function that returns an array in the map() callback, but you want your resulted array to be flat:
+            ['My dog', 'is awesome'].map(words => words.split(' ')) //[ [ 'My', 'dog' ], [ 'is', 'awesome' ] ] 
+            ['My dog', 'is awesome'].flatMap(words => words.split(' ')) //[ 'My', 'dog', 'is', 'awesome' ]
+
+
+                    @Object.fromEntries()
+            const person = { name: 'Fred', age: 87 } 
+            Object.entries(person) // [['name', 'Fred'], ['age', 87]]
+
+            const person = { name: 'Fred', age: 87 } 
+            const entries = Object.entries(person) 
+            const newPerson = Object.fromEntries(entries) 
+            person !== newPerson //true
+
+
+                    @ String.prototype.{trimStart,trimEnd}
+                trimStart()
+            'Testing'.trimStart() //'Testing' 
+            ' Testing'.trimStart() //'Testing' 
+            ' Testing '.trimStart() //'Testing ' 
+            'Testing'.trimStart() //'Testing'
+                
+                trimEnd()
+            'Testing'.trimEnd() //'Testing' 
+            ' Testing'.trimEnd() //' Testing' 
+            ' Testing '.trimEnd() //' Testing' 
+            'Testing '.trimEnd() //'Testing'
+
+                    @Symbol.prototype.description
+            const testSymbol = Symbol('Test') 
+            testSymbol.description // 'Test'
+            
